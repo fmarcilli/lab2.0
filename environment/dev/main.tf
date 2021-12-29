@@ -13,7 +13,7 @@ provider "azurerm" {
  }
 
 
-## LAB DEV
+## LAB DEV v3.0
 
 
 #Resource Group Module
