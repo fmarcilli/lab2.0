@@ -59,14 +59,14 @@ module "keyvault"{
 #   }
   
 ## VM Module Windows
-# module "vm_windows"{
-#   source = "../../modules/vm-windows"
-#   project_name        = "FLABS"
-#   environment         = "dev"
-#   location            = module.resource_group_lab.location
-#   rg_name             = module.resource_group_lab.name
-#   subnet_id           = module.vnet_lab.subnet_id   
-# }
+module "vm_windows"{
+  source = "../../modules/vm-windows"
+  project_name        = "FLABS"
+  environment         = "dev"
+  location            = module.resource_group_lab.location
+  rg_name             = module.resource_group_lab.name
+  subnet_id           = module.vnet_lab.subnet_id   
+}
 
 ## VM Module Linux
 # module "vm_lab"{
