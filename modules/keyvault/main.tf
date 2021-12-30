@@ -15,6 +15,7 @@ resource "azurerm_key_vault" "keyvault" {
 
     key_permissions = [
       "create",
+      "update",
       "get",
     ]
 
