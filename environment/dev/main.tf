@@ -25,6 +25,17 @@ module "resource_group_lab"{
 }
 
 
+## Key Vault Module
+module "keyvault"{
+  source = "../../modules/keyvault"
+  project_name        = "FLABS"
+  environment         = "dev"
+  location            = module.resource_group_lab.location
+  rg_name             = module.resource_group_lab.name
+}
+
+
+
 ## Storage Account Module
 # module "storage_account_lab"{
 #   source = "../../modules/storage-account"
