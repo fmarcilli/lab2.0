@@ -6,7 +6,8 @@ resource "azurerm_windows_virtual_machine" "vmwindows" {
   location            = var.location
   size                = "Standard_F2"
   admin_username      = "adminuser"
-  admin_password      = "P@$$w0rd1234!"
+  admin_password      = azurerm_key_vault_secret.vmpassword.value
+  #admin_password      = "P@$$w0rd1234!"
   network_interface_ids = [
     azurerm_network_interface.net-int-vmwin[each.key].id]
   
