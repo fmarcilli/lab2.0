@@ -17,8 +17,3 @@ variable rg_name {
   type = string
   description = "Resource Location"
 }
-
-variable "vault_uri" {
-  default = "https://keyvault-flabs-dev.vault.azure.net/"
-  
-}

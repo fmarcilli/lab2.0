@@ -30,18 +30,10 @@ resource "azurerm_key_vault" "keyvault" {
 }
 
 
-resource "random_string" "vm_password" {
-  length = 14
-  min_upper = 2
-  min_lower = 2
-  min_numeric = 2
-  min_special = 2
-  
-}
 
-resource "azurerm_key_vault_secret" "vm_secret" {
-  name         = "vm_secret"
-  value        = "${random_string.vm_password.result}"
-  vault_uri    = "${var.vault_uri}"
- # key_vault_id = azurerm_key_vault.keyvault.id
+
+resource "azurerm_key_vault_secret" "kv_secret" {
+  name         = "secret-sauce"
+  value        = "szechuan"
+  key_vault_id = azurerm_key_vault.keyvault.id
 }
