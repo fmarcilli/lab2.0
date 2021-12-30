@@ -6,7 +6,7 @@ resource "azurerm_key_vault" "keyvault" {
   location                   = var.location
   resource_group_name        = var.rg_name
   tenant_id                  = data.azurerm_client_config.current.tenant_id
-  sku_name                   = "premium"
+  sku_name                   = "standard"
   soft_delete_retention_days = 7
 
   access_policy {
@@ -30,7 +30,7 @@ resource "azurerm_key_vault" "keyvault" {
 }
 
 resource "azurerm_key_vault_secret" "keyvaultsecret" {
-  name         = "secret-sauce"
-  value        = "szechuan"
+  #name         = "secret-sauce"
+  #value        = "szechuan"
   key_vault_id = azurerm_key_vault.keyvault.id
 }

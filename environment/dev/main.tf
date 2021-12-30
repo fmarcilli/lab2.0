@@ -32,6 +32,7 @@ module "keyvault"{
   environment         = "dev"
   location            = module.resource_group_lab.location
   rg_name             = module.resource_group_lab.name
+
 }
 
 
