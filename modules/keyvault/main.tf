@@ -30,7 +30,7 @@ resource "azurerm_key_vault" "keyvault" {
 }
 
 resource "azurerm_key_vault_secret" "keyvaultsecret" {
-  #name         = "secret-sauce"
-  #value        = "szechuan"
+  name         = "secret-sauce"
+  value        = "szechuan"
   key_vault_id = azurerm_key_vault.keyvault.id
 }
