@@ -1,4 +1,6 @@
 
+
+
 resource "azurerm_windows_virtual_machine" "vmwindows" {
   for_each = toset(var.vm_name)
   name = each.value
@@ -11,6 +13,8 @@ resource "azurerm_windows_virtual_machine" "vmwindows" {
   #admin_password      = "P@$$w0rd1234!"
   network_interface_ids = [
     azurerm_network_interface.net-int-vmwin[each.key].id]
+
+  depends_on = [azurerm_key_vault.keyvault]
   
 
   os_disk {
