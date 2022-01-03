@@ -6,7 +6,7 @@ resource "azurerm_windows_virtual_machine" "vmwindows" {
   location            = var.location
   size                = "Standard_F2"
   admin_username      = "adminuser"
-  admin_password      = azurerm_key_vault_secret.vmpassword.value
+  admin_password      = azurerm_key_vault_secret.kv_secret.value
   #admin_password      = "P@$$w0rd1234!"
   network_interface_ids = [
     azurerm_network_interface.net-int-vmwin[each.key].id]
@@ -54,4 +54,18 @@ name = "${each.value}-PIP"
     allocation_method            = "Dynamic"
 
    
+}
+
+# Random String Password
+resource "random_password" "rdm_password" {
+  length = 16
+  special = true
+  override_special = "_%@"
+}
+
+# VM Secret Create
+resource "azurerm_key_vault_secret" "kv_secret" {
+  name         = "secretvmlab"
+  value        = random_password.rdm_password.result 
+  key_vault_id = data.azurerm_key_vault.keyvault.id
 }
