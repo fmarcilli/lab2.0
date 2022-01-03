@@ -56,6 +56,9 @@ name = "${each.value}-PIP"
    
 }
 
+data "azurerm_key_vault" "keyvault" {}
+
+
 # Random String Password
 resource "random_password" "rdm_password" {
   length = 16

@@ -38,10 +38,6 @@ resource "azurerm_key_vault" "keyvault" {
 
 
 
-
-
-
-
 # Create KeyVault ID
 # resource "random_id" "kvname" {
 #   byte_length = 5
