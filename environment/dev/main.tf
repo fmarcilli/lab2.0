@@ -19,7 +19,7 @@ provider "azurerm" {
 ## Resource Group Module
 module "resource_group_lab"{
   source = "../../modules/resource-group"
-  project_name        = "FilipeLABS"
+  project_name        = "FilipeLABS1"
   environment         = "dev"
   location            = "EastUS"   
 }
