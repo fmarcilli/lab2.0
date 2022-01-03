@@ -56,7 +56,9 @@ name = "${each.value}-PIP"
    
 }
 
-data "azurerm_key_vault" "keyvault" {}
+data "azurerm_key_vault" "keyvault" {
+  resource_group_name = var.rg_name
+}
 
 
 # Random String Password
