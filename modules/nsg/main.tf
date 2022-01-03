@@ -17,27 +17,12 @@ resource "azurerm_network_security_rule" "testrules" {
   destination_port_range      = each.value.destination_port_range
   source_address_prefix       = each.value.source_address_prefix
   destination_address_prefix  = each.value.destination_address_prefix
-  resource_group_name         = var.rg_name
+  #resource_group_name         = var.rg_name
+   resource_group_name = data.resource_group_name.rg_all
   network_security_group_name = azurerm_network_security_group.nsg-lab.name
 }
 
 
-
-
-# resource "azurerm_network_security_rule" "nsg-sec_rule-lab" {
-#   name                        = "RDP-Rule"
-#   priority                    = 100
-#   direction                   = "Inbound"
-#   access                      = "Allow"
-#   protocol                    = "Tcp"
-#   source_port_range           = "*"
-#   destination_port_range      = "3389"
-#   source_address_prefix       = "*"
-#   destination_address_prefix  = "*"
-#   resource_group_name         = var.rg_name
-#   network_security_group_name = azurerm_network_security_group.nsg-lab.name
-
-# }
 
 
 
