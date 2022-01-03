@@ -5,7 +5,8 @@ resource "azurerm_windows_virtual_machine" "vmwindows" {
   for_each = toset(var.vm_name)
   name = each.value
  
-  resource_group_name = var.rg_name
+  #resource_group_name = var.rg_name
+  resource_group_name = data.resource_group_name.rg_all
   location            = var.location
   size                = "Standard_F2"
   admin_username      = "adminuser"
@@ -38,7 +39,8 @@ for_each = toset(var.vm_name)
 name = "${each.value}-NET"
 
   location            = var.location
-  resource_group_name = var.rg_name
+  #resource_group_name = var.rg_name
+  resource_group_name = data.resource_group_name.rg_all
 
   ip_configuration {
     name                          = "internal"
@@ -55,7 +57,8 @@ for_each = toset(var.vm_name)
 name = "${each.value}-PIP"
 
     location                     = var.location
-    resource_group_name          = var.rg_name
+    #resource_group_name          = var.rg_name
+    resource_group_name = data.resource_group_name.rg_all
     allocation_method            = "Dynamic"
 
    

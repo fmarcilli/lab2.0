@@ -1,7 +1,8 @@
 resource "azurerm_network_security_group" "nsg-lab" {
   name                = "NSG-${var.project_name}-${var.environment}"
   location            = var.location
-  resource_group_name = var.rg_name
+  #resource_group_name = var.rg_name
+  resource_group_name = data.resource_group_name.rg_all
 }
 
 
