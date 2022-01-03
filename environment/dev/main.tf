@@ -19,7 +19,7 @@ provider "azurerm" {
 ## Resource Group Module
 module "resource_group_lab"{
   source = "../../modules/resource-group"
-  project_name        = "FilipeLABS"
+  project_name        = "FilipeLABS1"
   environment         = "dev"
   location            = "EastUS"   
 }
@@ -40,7 +40,7 @@ module "resource_group_lab"{
 ##VNET Module
 module "vnet_lab"{
   source = "../../modules/vnet"
-  project_name        = "FilipeLABS"
+  project_name        = "FilipeLABS1"
   environment         = "dev"
   location            = module.resource_group_lab.location
   rg_name             = module.resource_group_lab.name
@@ -73,7 +73,7 @@ module "vm_windows"{
 ##NSG Module 
 module "nsg-lab" {
   source = "../../modules/nsg"
-  project_name        = "FilipeLABS"
+  project_name        = "FilipeLABS1"
   environment         = "dev"
   location            = module.resource_group_lab.location
   rg_name             = module.resource_group_lab.name
