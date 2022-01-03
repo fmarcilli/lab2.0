@@ -14,7 +14,7 @@ resource "azurerm_windows_virtual_machine" "vmwindows" {
   network_interface_ids = [
     azurerm_network_interface.net-int-vmwin[each.key].id]
 
-  depends_on = [data.azurerm_key_vault.keyvault]
+  
   
 
   os_disk {
