@@ -57,7 +57,7 @@ for_each = toset(var.vm_name)
 name = "${each.value}-PIP"
 
     location                     = var.location
-    #resource_group_name          = var.rg_name
+    resource_group_name          = var.rg_name
     resource_group_name = data.resource_group_name.rg_all
     allocation_method            = "Dynamic"
 
