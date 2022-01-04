@@ -13,10 +13,10 @@ variable location {
   description = "Resource Location"
 }
 
-# variable rg_name {
-#   type = string
-#   description = "Resource Location"
-# }
+variable rg_name {
+  type = string
+  description = "Resource Location"
+}
 
 variable "vnet_name" {
    type = string
