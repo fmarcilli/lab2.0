@@ -8,7 +8,7 @@ resource "azurerm_windows_virtual_machine" "vmwindows" {
   name = each.value
  
   location             = "${data.azurerm_resource_group.rg_all.location}" 
-  rg_name              = "${data.azurerm_resource_group.rg_all.name}" 
+  resource_group_name  = "${data.azurerm_resource_group.rg_all.name}" 
   # resource_group_name = var.rg_name
   # location            = var.location
   size                = "Standard_F2"
@@ -42,8 +42,8 @@ for_each = toset(var.vm_name)
 name = "${each.value}-NET"
 
  
-location             = "${data.azurerm_resource_group.rg_all.location}" 
-rg_name              = "${data.azurerm_resource_group.rg_all.name}" 
+  location             = "${data.azurerm_resource_group.rg_all.location}" 
+  resource_group_name  = "${data.azurerm_resource_group.rg_all.name}" 
 # location            = var.location
 # resource_group_name = var.rg_name
  
@@ -63,7 +63,7 @@ for_each = toset(var.vm_name)
 name = "${each.value}-PIP"
 
   location             = "${data.azurerm_resource_group.rg_all.location}" 
-  rg_name              = "${data.azurerm_resource_group.rg_all.name}" 
+  resource_group_name  = "${data.azurerm_resource_group.rg_all.name}"  
     # location                     = var.location
     # resource_group_name          = var.rg_name
    

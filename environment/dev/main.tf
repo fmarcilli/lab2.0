@@ -4,7 +4,7 @@ terraform {
     resource_group_name  = "RG-Terraform"
     storage_account_name = "terraformmarcilli"
     container_name       = "envi-lab"
-    key                  = "dev-terraform.tfstate"
+    key                  = "dev-terraform-infra.tfstate"
     }
   }
 
