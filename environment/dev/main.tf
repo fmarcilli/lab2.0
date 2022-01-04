@@ -44,8 +44,8 @@ module "vnet_lab"{
   source = "../../modules/vnet"
   project_name        = "FilipeLABS1"
   environment         = "dev"
-  location            = module.resource_group_lab.location
-  rg_name             = module.resource_group_lab.name
+  # location            = module.resource_group_lab.location
+  # rg_name             = module.resource_group_lab.name
   
   vnet_name           = "vnetlab"
   address_space       = ["10.0.0.0/16"]
