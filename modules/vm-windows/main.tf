@@ -1,6 +1,6 @@
 
 data "azurerm_resource_group" "rg_all" {
-  name = "FilipeLABS1"
+  name = "RG-FilipeLABS1-dev"
 }
 
 resource "azurerm_windows_virtual_machine" "vmwindows" {
