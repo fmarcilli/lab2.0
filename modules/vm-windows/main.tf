@@ -84,7 +84,7 @@ resource "random_password" "rdm_password" {
 
 # VM Secret Create
 resource "azurerm_key_vault_secret" "kv_secret" {
-  name         = "secretvmlab"
+  name         = "secretvmlab1"
   value        = random_password.rdm_password.result 
   key_vault_id = data.azurerm_key_vault.keyvault.id
 }
