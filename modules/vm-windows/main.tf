@@ -1,13 +1,17 @@
 
-
+data "azurerm_resource_group" "rg_all"
+  {
+    name = "FilipeLABS1"
+  }
 
 resource "azurerm_windows_virtual_machine" "vmwindows" {
   for_each = toset(var.vm_name)
   name = each.value
  
-  resource_group_name = var.rg_name
-  #resource_group_name = data.resource_group_name.rg_all
-  location            = var.location
+  location             = "${data.azurerm_resource_group.rg_all.location}" 
+  rg_name              = "${data.azurerm_resource_group.rg_all.name}" 
+  # resource_group_name = var.rg_name
+  # location            = var.location
   size                = "Standard_F2"
   admin_username      = "adminuser"
   admin_password      = azurerm_key_vault_secret.kv_secret.value
@@ -38,9 +42,12 @@ resource "azurerm_network_interface" "net-int-vmwin" {
 for_each = toset(var.vm_name)
 name = "${each.value}-NET"
 
-  location            = var.location
-  resource_group_name = var.rg_name
-  #resource_group_name = data.resource_group_name.rg_all
+ 
+location             = "${data.azurerm_resource_group.rg_all.location}" 
+rg_name              = "${data.azurerm_resource_group.rg_all.name}" 
+# location            = var.location
+# resource_group_name = var.rg_name
+ 
 
   ip_configuration {
     name                          = "internal"
@@ -56,9 +63,11 @@ resource "azurerm_public_ip" "public-marcilli" {
 for_each = toset(var.vm_name)
 name = "${each.value}-PIP"
 
-    location                     = var.location
-    resource_group_name          = var.rg_name
-    #resource_group_name = data.resource_group_name.rg_all
+  location             = "${data.azurerm_resource_group.rg_all.location}" 
+  rg_name              = "${data.azurerm_resource_group.rg_all.name}" 
+    # location                     = var.location
+    # resource_group_name          = var.rg_name
+   
     allocation_method            = "Dynamic"
 
    
