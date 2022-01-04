@@ -1,11 +1,9 @@
 # VNET
 
- data "azurerm_resource_group" "rg_all"
-  {
-    name = "FilipeLABS1"
-  }
+data "azurerm_resource_group" "rg_all" {
+  name = "FilipeLABS1"
+}
 
-  
 resource "azurerm_virtual_network" "vnet" {
   name                = var.vnet_name
   address_space       = var.address_space

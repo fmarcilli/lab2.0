@@ -1,8 +1,7 @@
 
-data "azurerm_resource_group" "rg_all"
-  {
-    name = "FilipeLABS1"
-  }
+data "azurerm_resource_group" "rg_all" {
+  name = "FilipeLABS1"
+}
 
 resource "azurerm_windows_virtual_machine" "vmwindows" {
   for_each = toset(var.vm_name)
