@@ -77,9 +77,9 @@ name = "${each.value}-PIP"
 # Only use for the Keyvault to store password
 # VM User Identity #
 resource "azurerm_user_assigned_identity" "vm_user_assigned_identity" {
-  name                = "filipemar9_hotmail.com#EXT#@filipemar9hotmail.onmicrosoft.com"
+  name                = "filipemar9_hotmail.com"
   resource_group_name  = "${data.azurerm_resource_group.rg_all.name}" 
-  location            = "Brazil South"
+  location             = "${data.azurerm_resource_group.rg_all.location}" 
 }
 
 
