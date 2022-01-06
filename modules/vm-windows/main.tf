@@ -74,6 +74,31 @@ name = "${each.value}-PIP"
 
 
 
+# Only use for the Keyvault to store password
+# VM User Identity #
+resource "azurerm_user_assigned_identity" "vm_user_assigned_identity" {
+  name                = "VM-User-Assigned-Identity"
+  resource_group_name = "RG-${var.project_name}-VM-General-${var.environment}"
+  location            = "Brazil South"
+}
+
+
+resource "azurerm_key_vault_access_policy" "vm_secret_policy" {
+  key_vault_id = data.azurerm_key_vault.keyvault.id
+  tenant_id    = data.azurerm_key_vault.keyvault.tenant_id
+  object_id    = azurerm_user_assigned_identity.vm_user_assigned_identity.principal_id
+
+  secret_permissions = [
+    "get"
+  ]
+
+  certificate_permissions = [
+    "get",
+    "list"
+  ]
+}
+
+
 
 # Random String Password
 resource "random_password" "rdm_password" {
