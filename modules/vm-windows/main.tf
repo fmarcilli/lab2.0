@@ -78,7 +78,7 @@ name = "${each.value}-PIP"
 # VM User Identity #
 resource "azurerm_user_assigned_identity" "vm_user_assigned_identity" {
   name                = "VM-User-Assigned-Identity"
-  resource_group_name = "RG-${var.project_name}-VM-General-${var.environment}"
+  resource_group_name  = "${data.azurerm_resource_group.rg_all.name}" 
   location            = "Brazil South"
 }
 
