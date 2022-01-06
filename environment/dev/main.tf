@@ -16,23 +16,23 @@ provider "azurerm" {
 ## LAB DEV v2.1 - Criação de RG e KeyVault#
 
 
-# # Resource Group Module
-# module "resource_group_lab"{
-#   source = "../../modules/resource-group"
-#   project_name        = "FilipeLABS1"
-#   environment         = "dev"
-#   location            = "EastUS"   
-# }
+# Resource Group Module
+module "resource_group_lab"{
+  source = "../../modules/resource-group"
+  project_name        = "FilipeLABS1"
+  environment         = "dev"
+  location            = "EastUS"   
+}
 
 
-# # Key Vault Module
-# module "keyvault"{
-#   source = "../../modules/keyvault"
-#   project_name        = "FLABS"
-#   environment         = "dev"
-#   location            = module.resource_group_lab.location
-#   rg_name             = module.resource_group_lab.name
+# Key Vault Module
+module "keyvault"{
+  source = "../../modules/keyvault"
+  project_name        = "FLABS"
+  environment         = "dev"
+  location            = module.resource_group_lab.location
+  rg_name             = module.resource_group_lab.name
 
-# }
+}
 
 
