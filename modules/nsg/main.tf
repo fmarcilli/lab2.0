@@ -1,8 +1,14 @@
+data "azurerm_resource_group" "rg_all" {
+  name = "RG-FilipeLABS1-dev"
+}
+
+
 resource "azurerm_network_security_group" "nsg-lab" {
   name                = "NSG-${var.project_name}-${var.environment}"
-  location            = var.location
+  #location            = var.location
   #resource_group_name = var.rg_name
-  resource_group_name = data.resource_group_name.rg_all
+  location             = "${data.azurerm_resource_group.rg_all.location}" 
+  resource_group_name  = "${data.azurerm_resource_group.rg_all.name}" 
 }
 
 
@@ -18,7 +24,7 @@ resource "azurerm_network_security_rule" "testrules" {
   source_address_prefix       = each.value.source_address_prefix
   destination_address_prefix  = each.value.destination_address_prefix
   #resource_group_name         = var.rg_name
-   resource_group_name = data.resource_group_name.rg_all
+  resource_group_name  = "${data.azurerm_resource_group.rg_all.name}" 
   network_security_group_name = azurerm_network_security_group.nsg-lab.name
 }
 
