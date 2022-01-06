@@ -16,15 +16,6 @@ provider "azurerm" {
 ## LAB DEV v3.0
 
 
-## Resource Group Module
-# module "resource_group_lab"{
-#   source = "../../modules/resource-group"
-#   project_name        = "FilipeLABS1"
-#   environment         = "dev"
-#   location            = "EastUS"   
-# }
-
-
 
 
 
@@ -40,25 +31,25 @@ provider "azurerm" {
 
 
 ##VNET Module
-module "vnet_lab"{
-  source = "../../modules/vnet"
-  project_name        = "FilipeLABS1"
-  environment         = "dev"
+# module "vnet_lab"{
+#   source = "../../modules/vnet"
+#   project_name        = "FilipeLABS1"
+#   environment         = "dev"
  
-  vnet_name           = "vnetlab"
-  address_space       = ["10.0.0.0/16"]
-  address_prefixes    = ["10.0.2.0/24"]  
-  }
+#   vnet_name           = "vnetlab"
+#   address_space       = ["10.0.0.0/16"]
+#   address_prefixes    = ["10.0.2.0/24"]  
+#   }
   
-## VM Module Windows
-module "vm_windows"{
-  source = "../../modules/vm-windows"
-  project_name        = "FLABS"
-  environment         = "dev"
+# # VM Module Windows
+# module "vm_windows"{
+#   source = "../../modules/vm-windows"
+#   project_name        = "FLABS"
+#   environment         = "dev"
 
-  subnet_id           = module.vnet_lab.subnet_id   
+#   subnet_id           = module.vnet_lab.subnet_id   
 
-}
+# }
 
 ## VM Module Linux
 # module "vm_lab"{
