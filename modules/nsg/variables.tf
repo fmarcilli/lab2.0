@@ -8,10 +8,10 @@ variable environment {
   description = "Environment"
 }
 
-variable location {
-  type = string
-  description = "Resource Location"
-}
+# variable location {
+#   type = string
+#   description = "Resource Location"
+# }
 
 # variable rg_name {
 #   type = string
